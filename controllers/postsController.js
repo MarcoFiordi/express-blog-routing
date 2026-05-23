@@ -4,6 +4,43 @@ import posts from "../data/posts.js";
 function index(request, response){
     response.json(posts);
 }
+function show(request, response){
+    const id = request.params.id;
+    const realId = Number(id.trim());
+    if (isNaN(realId)){
+        response.status(404)
+            .json({
+                error: 'parametro id non corretto'
+            });
+        return;
+    }
+    if (realId <= 0){
+        response.status(404)
+            .json({
+                error: 'parametro id negativo o zero (CORREGGI)'
+            });
+        return;
+
+    }
+
+    const postFound = posts.find(posts => {
+        return posts.id === realId
+    });
+
+    if (postFound === undefined){
+        response.status(404)
+            .json({
+                error: 'post non trovato',
+                result: null
+            });
+        return;
+    }
+
+    response.json({
+        error: null,
+        results: postFound
+    });
+}
 
 function store(request, response) {
     response.json({
@@ -34,4 +71,5 @@ export { index,
     store,
     update,
     modify,
-    destroy};
+    destroy,
+    show};

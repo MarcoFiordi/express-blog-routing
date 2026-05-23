@@ -1,10 +1,12 @@
 import express from 'express';
-import { index, modify, store, update, destroy } from '../controllers/postsController.js';
+import { index, modify, store, update, destroy, show } from '../controllers/postsController.js';
 
 const router = express.Router();
 
 
 router.get('/', index);
+
+router.get('/:id', show)
 
 router.post('/', store);
 
