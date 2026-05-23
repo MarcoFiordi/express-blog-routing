@@ -1,12 +1,12 @@
 import express from 'express';
-import routers from 'express';
-import posts from '../data/posts.js';
+import { index, create, update} from '../controllers/postsController.js';
 
 const router = express.Router();
 
-function index (request, response){
-    response.json(posts);
-}
+
 router.get('/', index);
 
+router.post('/', create);
+
+router.put('/:id', update)
 export default router;

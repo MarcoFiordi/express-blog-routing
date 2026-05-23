@@ -12,7 +12,7 @@ app.listen(port, (error)=> {
         console.error('errore del server');
         
     } else {
-        console.log('server in ascolto sulla porta 3000');
+        console.log(`server in ascolto sulla porta ${port}`);
         
     }
 })
