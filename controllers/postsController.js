@@ -24,8 +24,14 @@ function modify(request, response){
     })
 
 }
-
+function destroy(request, response){
+    const id = request.params.id;
+    response.json({
+        messaggio:`distruzione del post ${id}`
+    })
+}
 export { index,
     store,
     update,
-    modify};
+    modify,
+    destroy};
